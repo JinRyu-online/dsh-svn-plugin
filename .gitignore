@@ -1,0 +1,12 @@
+# dependencies
+node_modules/
+
+# build output (regenerated via `pnpm run build`) — root-level only, so the
+# source tree under src/client is NOT ignored
+/lib/
+/client/
+
+# logs & temp
+*.log
+.DS_Store
+Thumbs.db

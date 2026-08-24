@@ -1,0 +1,94 @@
+{
+  "name": "dsh-svn-plugin",
+  "version": "0.1.0",
+  "description": "SVN (Subversion) 版本控制面板 for DSH Web GUI：本地修改 / 历史 / Diff / 搁置 / 提交 / 更新 / 还原 / 冲突解决 / 分支 / Blame / 属性 / ChangeList / 仓库浏览，集成进右侧边栏（dsh-better-sidebar 服务化 tab）。",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dsh-svn/dsh-svn-plugin"
+  },
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "svn",
+    "subversion",
+    "version-control"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.client.json --noEmit",
+    "build": "rm -rf lib client && tsc -p tsconfig.json && npm run build:client",
+    "build:client": "tsdown && node scripts/normalize-client-banner.mjs",
+    "check": "npm run typecheck && npm run build"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-agent": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-llm": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.8",
+    "dsh-better-sidebar": "^0.14.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "dsh-better-sidebar": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ],
+      "platform": "web"
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": "./client/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "client",
+    "cordis.patch.yml",
+    "scripts",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-client-runtime": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-client-locale": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-client-ui-primitives": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-llm": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.8",
+    "@types/node": "^24.0.0",
+    "@types/react": "~18.3.1",
+    "@types/react-dom": "~18.3.1",
+    "dsh-better-sidebar": "^0.14.0",
+    "lightningcss": "^1.32.0",
+    "react": "^18.3.1",
+    "react-dom": "~18.3.1",
+    "tsdown": "^0.22.2",
+    "typescript": "^5.8.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}

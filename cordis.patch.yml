@@ -1,0 +1,12 @@
+# dsh-svn-plugin bundle patch
+#
+# Inserts this plugin into a profile's cordis layer stack when installed via
+# the official CLI:
+#
+#   dsh plugin --profile web add dsh-svn-plugin
+#
+# The row id is namespaced `dsh-svn` so it can coexist with any standalone
+# installs of the same package under a different entry id.
+- insert:
+    - id: dsh-svn
+      name: 'dsh-svn-plugin'
